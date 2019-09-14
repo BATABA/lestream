@@ -17,21 +17,11 @@ class AdminController extends AbstractController
     */
     public function indexAction(TranslatorInterface $translator)
     {
-        $session = new Session();
 
-        if (empty($session->get('id_administrator'))) {
-            return $this->redirectToRoute('administration_login');
-            exit();
+        if (!$this->getUser()) {
+            $this->redirectToRoute('app_login');
         }
 
-        return $this->render('base.html.twig');
-    }
-
-    /**
-    * @Route("/administration/connexion", name="administration_login")
-    */
-    public function loginAction(TranslatorInterface $translator)
-    {
         return $this->render('base.html.twig');
     }
 }

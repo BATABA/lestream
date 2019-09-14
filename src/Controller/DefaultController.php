@@ -11,7 +11,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 class DefaultController extends AbstractController
 {
     /**
-    * @Route("/")
+    * @Route("/", name="homepage")
     */
     public function indexAction(TranslatorInterface $translator)
     {
