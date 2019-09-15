@@ -13,7 +13,7 @@ class DefaultController extends AbstractController
     /**
     * @Route("/", name="homepage")
     */
-    public function indexAction(TranslatorInterface $translator)
+    public function index(TranslatorInterface $translator)
     {
         return $this->render('base.html.twig');
     }

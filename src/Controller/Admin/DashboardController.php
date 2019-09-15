@@ -1,8 +1,9 @@
 <?php
 
-// src/Controller/AdminController.php
-namespace App\Controller;
+// src/Controller/Admin/DashboardController.php
+namespace App\Controller\Admin;
 
+use App\Repository\StreamerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -10,17 +11,15 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class AdminController extends AbstractController
+class DashboardController extends AbstractController
 {
     /**
-    * @Route("/administration", name="administration")
+    * @Route("/admin/dashboard", name="app_admin_dashboard")
     */
-    public function indexAction(TranslatorInterface $translator)
+    public function index(StreamerRepository $streamers, TranslatorInterface $translator)
     {
-
-        if (!$this->getUser()) {
-            $this->redirectToRoute('app_login');
-        }
+        $list_streamer = $streamers->findAll();
+        var_dump($list_streamer);
 
         return $this->render('base.html.twig');
     }
